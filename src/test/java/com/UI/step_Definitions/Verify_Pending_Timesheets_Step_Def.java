@@ -1,11 +1,15 @@
 package com.UI.step_Definitions;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Verify_Pending_Timesheets_Step_Def {
 
+	private static final Logger LOGGER = LogManager.getLogger(Verify_Pending_Timesheets_Step_Def.class);
 	@Given("The user is on Homepage")
 	public void the_user_is_on_homepage() {
 	   System.out.println("The user is on Homepage");
