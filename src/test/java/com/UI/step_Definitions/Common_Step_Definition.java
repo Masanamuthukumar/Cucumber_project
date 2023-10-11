@@ -10,11 +10,17 @@ import com.UI.constants.Constants;
 import com.UI.webdriver_manager.DriverManager;
 
 import io.cucumber.java.Before;
+import io.cucumber.messages.types.Scenario;
 
 public class Common_Step_Definition {
 
-	
-	
+//	private static String scenarioname=null;
+//	
+//	public static String getScenarioname() {
+//		return scenarioname;
+//	}
+
+
 	private static final Logger LOGGER = LogManager.getLogger(Common_Step_Definition.class);
 
 	
@@ -23,16 +29,16 @@ public class Common_Step_Definition {
 	{
 	LOGGER.info("Execution started");	
 		try {
+			//scenarioname=scenario.getName();
 			LOGGER.info("Instantiation the common utils.");
-			CommonUtils commonUtils = new CommonUtils();
 			LOGGER.info("Loading the properties file");
-			commonUtils.loadproperties();
+			CommonUtils.getInstance().loadproperties();
 			LOGGER.info("Checking the Driver is NULL or Not");
 			if(DriverManager.getDriver()==null)
 			{
 				LOGGER.info("Driver is NULL.Instantiating it.");
 				DriverManager.launchbrowser();	
-				commonUtils.initWebElements();
+				CommonUtils.getInstance().initWebElements();
 			}
 
 		}

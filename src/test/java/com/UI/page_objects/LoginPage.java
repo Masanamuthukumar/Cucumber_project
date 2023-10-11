@@ -5,12 +5,53 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
 
+	private static LoginPage LoginPageInstance;
+	
+	private LoginPage()
+	{
+		
+	}
+	
+	public static LoginPage getInstance()
+	{
+		if(LoginPageInstance==null)
+		{
+			LoginPageInstance = new LoginPage();
+		}
+		return LoginPageInstance;
+	}
+	
 	@FindBy(xpath="//input[@name=\"username\"]")
-	public static WebElement USERNAME;
+	private WebElement USERNAME;
 	
 	@FindBy(xpath="//input[@type=\"password\"]")
-	public static WebElement PASSWORD;
+	private WebElement PASSWORD;
 	
 	@FindBy(xpath="//button[@type=\"submit\"]")
-	public static WebElement LOGIN_BUTTON;
+	private WebElement LOGIN_BUTTON;
+
+//	public WebElement getUSERNAME() {
+//		return USERNAME;
+//	}
+//
+//	public WebElement getPASSWORD() {
+//		return PASSWORD;
+//	}
+//
+//	public WebElement getLOGIN_BUTTON() {
+//		return LOGIN_BUTTON;
+//	}
+	
+	public void enterUserName(String username)
+	{
+		USERNAME.sendKeys(username);
+	}
+	public void enterpassword(String password)
+	{
+		PASSWORD.sendKeys(password);
+	}
+	public void clickLoginButton()
+	{
+		LOGIN_BUTTON.click();
+	}
 }
