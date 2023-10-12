@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.UI.Utilities.CommonUtils;
 import com.UI.constants.Constants;
+import com.UI.page_objects.LoginPage;
 import com.UI.webdriver_manager.DriverManager;
 
 import io.cucumber.java.Before;
@@ -40,11 +41,22 @@ public class Common_Step_Definition {
 				DriverManager.launchbrowser();	
 				CommonUtils.getInstance().initWebElements();
 			}
-
+			login();
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+
+	private void login() throws InterruptedException {
+		// TODO Auto-generated method stub
+		DriverManager.getDriver().get(Constants.APP_URL);
+		Thread.sleep(2000);
+		LoginPage.getInstance().enterUserName(Constants.USERNAME);
+		LoginPage.getInstance().enterpassword(Constants.PASSWORD);
+		LoginPage.getInstance().clickLoginButton();
+		
 	}
 
 	}

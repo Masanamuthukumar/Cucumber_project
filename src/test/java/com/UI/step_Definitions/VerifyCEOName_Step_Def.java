@@ -30,11 +30,6 @@ public class VerifyCEOName_Step_Def {
 	public void the_user_is_logged_in_successfully_and_is_on_homepage() throws InterruptedException {
 
 		try {
-			DriverManager.getDriver().get(Constants.APP_URL);
-			Thread.sleep(2000);
-			LoginPage.getInstance().enterUserName(Constants.USERNAME);
-			LoginPage.getInstance().enterpassword(Constants.PASSWORD);
-			LoginPage.getInstance().clickLoginButton();
 
 			String url = DriverManager.getDriver().getCurrentUrl();
 			if(url.contains("dashboard"))
